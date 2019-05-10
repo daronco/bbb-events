@@ -87,7 +87,7 @@ module BBBEvents
       end
     end
 
-    def to_json
+    def to_h
       {
         metadata: @metadata,
         meeting_id: @meeting_id,
@@ -97,7 +97,11 @@ module BBBEvents
         attendees: attendees.map(&:to_h),
         files: @files,
         polls: polls.map(&:to_h)
-      }.to_json
+      }
+    end
+
+    def to_json
+      to_h.to_json
     end
 
     private
