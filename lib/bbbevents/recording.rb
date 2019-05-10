@@ -93,9 +93,9 @@ module BBBEvents
         duration: @duration,
         start: @start,
         finish: @finish,
-        attendees: attendees.map(&:to_json),
+        attendees: attendees.map(&:to_h),
         files: @files,
-        polls: polls.map(&:to_json),
+        polls: polls.map(&:to_h)
       }.to_json
     end
 
