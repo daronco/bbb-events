@@ -21,7 +21,8 @@ module BBBEvents
       raise "#{filename} is missing recording key." unless raw_recording_data.key?("recording")
 
       recording_data = raw_recording_data["recording"]
-      events         = recording_data["event"]
+      events = recording_data["event"]
+      events = [events] unless events.is_a?(Array)
 
       @metadata   = recording_data["metadata"]
       @meeting_id = recording_data["meeting"]["id"]
