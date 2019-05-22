@@ -7,6 +7,7 @@ module BBBEvents
 
     def initialize(join_event)
       @id        = join_event["userId"]
+      @extUserId = join_event["externalUserId"]
       @name      = join_event["name"]
       @moderator = (join_event["role"] == MODERATOR_ROLE)
 
@@ -61,6 +62,12 @@ module BBBEvents
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
       hash
+    end
+
+    def to_json
+      hash = {}
+      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      hash.to_json
     end
 
     private
